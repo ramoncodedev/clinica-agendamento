@@ -2,6 +2,8 @@
 
 API REST para gerenciamento de consultas em clínica de nutrição. Permite cadastrar pacientes, nutricionistas e serviços, além de agendar, listar e cancelar consultas com controle de conflito de horários.
 
+**Deploy:** https://clinica-agendamento-production.up.railway.app
+
 ## Stack
 
 - Java 21

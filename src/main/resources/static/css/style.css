@@ -552,3 +552,100 @@ textarea.field { resize: vertical; min-height: 76px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.18); }
+
+/* ─── MOBILE BAR (oculta no desktop) ────────────── */
+.mobile-bar { display: none; }
+.mobile-overlay { display: none; }
+
+/* ─── RESPONSIVO ─────────────────────────────────── */
+@media (max-width: 768px) {
+  body { flex-direction: column; overflow: auto; }
+
+  .mobile-bar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: var(--sidebar-bg);
+    border-bottom: 1px solid var(--sidebar-border);
+    position: sticky;
+    top: 0;
+    z-index: 60;
+  }
+
+  .mobile-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: all 0.22s var(--ease);
+  }
+
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 49;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.22s var(--ease);
+  }
+
+  .mobile-overlay.open { opacity: 1; pointer-events: all; }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -252px;
+    height: 100vh;
+    z-index: 50;
+    transition: left 0.28s var(--ease);
+  }
+
+  .sidebar.open { left: 0; }
+
+  .main { height: auto; width: 100%; }
+
+  .page-header {
+    padding: 18px 18px 14px;
+    position: static;
+  }
+
+  .page-title { font-size: 26px; }
+
+  .page-content { padding: 16px 18px 32px; }
+
+  .card { overflow-x: auto; }
+
+  .stats-row { flex-wrap: wrap; gap: 8px; padding: 14px 16px; }
+
+  .card-toolbar { gap: 8px; }
+
+  .form-row { grid-template-columns: 1fr; }
+
+  .toasts { bottom: 14px; right: 14px; left: 14px; }
+  .toast { min-width: unset; max-width: unset; }
+}
