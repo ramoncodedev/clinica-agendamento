@@ -43,4 +43,11 @@ public class PacienteService {
         return PacienteResponseDTO.de(paciente);
     }
 
+    public void deletar(Long id) {
+        if (!repository.existsById(id)) {
+            throw new IllegalArgumentException("Paciente não encontrado");
+        }
+        repository.deleteById(id);
+    }
+
 }

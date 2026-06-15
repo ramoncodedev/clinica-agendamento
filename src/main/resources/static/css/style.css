@@ -249,6 +249,21 @@ body {
 
 .btn-danger:hover { background: var(--danger-bg); border-color: rgba(184,60,60,0.45); }
 
+.btn-icon {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  line-height: 1;
+  transition: background 0.15s;
+}
+
+.btn-icon:hover { background: var(--danger-bg); }
+
+.td-actions { width: 48px; text-align: center; }
+
 .btn-save {
   padding: 10px 26px;
   background: var(--green-deep);

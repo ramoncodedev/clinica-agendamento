@@ -22,8 +22,9 @@ async function call(method, path, body) {
 
 const api = {
   pacientes: {
-    list:   ()    => call('GET',  '/pacientes'),
-    create: (d)   => call('POST', '/pacientes', d),
+    list:   ()    => call('GET',    '/pacientes'),
+    create: (d)   => call('POST',   '/pacientes', d),
+    delete: (id)  => call('DELETE', `/pacientes/${id}`),
   },
   nutricionistas: {
     list:   ()    => call('GET',  '/nutricionistas'),

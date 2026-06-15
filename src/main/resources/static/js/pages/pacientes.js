@@ -47,12 +47,24 @@ function renderPacientesTable(list) {
       <td class="td-sub">${esc(p.cpf)}</td>
       <td class="td-sub">${esc(p.email)}</td>
       <td class="td-sub">${esc(p.telefone)}</td>
+      <td class="td-actions">
+        <button class="btn-icon btn-danger" onclick="deletarPaciente(${p.id})" title="Excluir paciente">🗑️</button>
+      </td>
     </tr>`).join('');
   document.getElementById('pac-body').innerHTML = `
     <table>
-      <thead><tr><th>Nome</th><th>CPF</th><th>E-mail</th><th>Telefone</th></tr></thead>
+      <thead><tr><th>Nome</th><th>CPF</th><th>E-mail</th><th>Telefone</th><th></th></tr></thead>
       <tbody>${rows}</tbody>
     </table>`;
+}
+
+async function deletarPaciente(id) {
+  if (!confirm('Tem certeza que deseja excluir este paciente?')) return;
+  try {
+    await api.pacientes.delete(id);
+    toast('Paciente excluído com sucesso');
+    pagePacientes();
+  } catch (e) { toast(e.message, 'err'); }
 }
 
 function formPaciente() {
